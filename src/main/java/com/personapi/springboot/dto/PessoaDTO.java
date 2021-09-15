@@ -35,6 +35,7 @@ public class PessoaDTO {
 		@CPF
 		private String cpf;
 		
+		
 		private LocalDate dataNascimento;
 		
 		@Valid //quando os dados do telefone, cada um dos dados da lista precisa ser validado
