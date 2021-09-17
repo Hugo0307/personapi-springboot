@@ -13,7 +13,6 @@ public interface PessoaMapper {
 	
 	PessoaMapper INSTANCE = Mappers.getMapper(PessoaMapper.class);
 	
-	
 	//@Mapping(target = "dataNascimento", source = "dataNascimento", dateFormat = "dd-MM-yyyy")
 	Pessoa toModel(PessoaDTO pessoaDTO);//fazendo a conversão de um DTO pra uma classe modelo
 	

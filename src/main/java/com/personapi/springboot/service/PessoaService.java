@@ -1,5 +1,8 @@
 package com.personapi.springboot.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +18,7 @@ public class PessoaService {
 	
 	private PessoaRepository pessoaRepository;
 	
-	
-	private PessoaMapper pessoaMapper = PessoaMapper.INSTANCE;
+	private final PessoaMapper pessoaMapper = PessoaMapper.INSTANCE;
 	
 	@Autowired
 	public PessoaService(PessoaRepository pessoaRepository) {
@@ -33,4 +35,12 @@ public class PessoaService {
 				.build();
 	}
 
+	public List<PessoaDTO> listAll() {
+		List<Pessoa> allPessoas = pessoaRepository.findAll();
+		return allPessoas.stream()
+				.map(pessoaMapper::toDto)
+				.collect(Collectors.toList());
+	}
+
+	
 }

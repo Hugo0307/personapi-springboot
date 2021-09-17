@@ -1,10 +1,10 @@
 package com.personapi.springboot.dto;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 @Data
-@Builder
+@SuperBuilder
 public class MessageResponseDTO {
 	
 	
