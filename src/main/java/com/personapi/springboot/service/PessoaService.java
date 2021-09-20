@@ -13,18 +13,15 @@ import com.personapi.springboot.exception.PessoaNotFoundException;
 import com.personapi.springboot.mapper.PessoaMapper;
 import com.personapi.springboot.repository.PessoaRepository;
 
+import lombok.AllArgsConstructor;
 
 @Service //indica pra o spring gerenciar essa classe do tipo serviço, onde vai conter todas as regras de negócio da aplicação
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PessoaService {
 	
 	private PessoaRepository pessoaRepository;
 	
 	private final PessoaMapper pessoaMapper = PessoaMapper.INSTANCE;
-	
-	@Autowired
-	public PessoaService(PessoaRepository pessoaRepository) {
-		this.pessoaRepository = pessoaRepository;
-	}
 	
 	/**
 	 * Método que insere os dados da pessoa no sistema e retorna o id da pessoa criada no sistema.
@@ -35,10 +32,7 @@ public class PessoaService {
 		Pessoa pessoaToSave = pessoaMapper.toModel(pessoaDTO);
 		
 		Pessoa savedPessoa = pessoaRepository.save(pessoaToSave);//já salva a pessoa com a data de nascimento convertida
-		return MessageResponseDTO
-				.builder()
-				.message("ID da pessoa criada: " + savedPessoa.getId())
-				.build();
+		return createMessageResponse(savedPessoa.getId(), "ID da pessoa criada: ");
 	}
 
 	/**
@@ -73,6 +67,16 @@ public class PessoaService {
 	}
 
 	/**
+	 * Método responsável por deletar o registro da pessoa pelo id informado
+	 * @param id
+	 * @throws PessoaNotFoundException
+	 */
+	public void delete(Long id) throws PessoaNotFoundException{
+		verifyIfExists(id);
+		pessoaRepository.deleteById(id);
+	}
+	
+	/**
 	 * Método responsável por verificar se existe a pessoa pelo id informado e retorna
 	 * uma exceção caso não haja registro com o id informado.
 	 * @param id
@@ -85,14 +89,33 @@ public class PessoaService {
 	}
 
 	/**
-	 * Método responsável por deletar o registro da pessoa pelo id informado
+	 * Método que realiza a atualiza o registro da pessoa do id informado
 	 * @param id
+	 * @param pessoaDTO
+	 * @return
 	 * @throws PessoaNotFoundException
 	 */
-	public void delete(Long id) throws PessoaNotFoundException{
+	public MessageResponseDTO updateById(Long id, PessoaDTO pessoaDTO) throws PessoaNotFoundException {
 		verifyIfExists(id);
-		pessoaRepository.deleteById(id);
+		
+		Pessoa pessoaToUpdate = pessoaMapper.toModel(pessoaDTO);
+		
+		Pessoa updatePessoa = pessoaRepository.save(pessoaToUpdate);//já salva a pessoa com a data de nascimento convertida
+		return createMessageResponse(updatePessoa.getId(), "ID da pessoa atualizada: ");
+		
 	}
 
+	/**
+	 * Método criado para não haver código boilerplate
+	 * @param id
+	 * @param message
+	 * @return
+	 */
+	private MessageResponseDTO createMessageResponse(Long id, String message) {
+		return MessageResponseDTO
+				.builder()
+				.message(message + id)
+				.build();
+	}
 	
 }
