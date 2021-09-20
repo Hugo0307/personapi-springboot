@@ -28,9 +28,11 @@ buildNumber.properties
 .mvn
 application-dev.properties
 application-prod.properties
-
+system.properties
+Procfile
 *.class
 *.cmd
+HELP.md
 
 # JDT-specific (Eclipse Java Development Tools)
 *.classpath
