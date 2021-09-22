@@ -5,11 +5,13 @@ com Spring Boot, guiado pela live coding na Digital Innovation One, com o profes
 
 Desenvolvi usando o SpringToolSuite4.
 
-- Criei um modelo de dados para mapear as entidades em um banco de dados.
+* Criei um modelo de dados para mapear as entidades em um banco de dados.
 
-- Desenvolvi o CRUD para o gerenciamento das pessoas(cadastro, consulta de uma lista de pessoas ou de
+* Desenvolvi o CRUD para o gerenciamento das pessoas(cadastro, consulta de uma lista de pessoas ou de
 uma pessoa pelo id informado, atualização e remoção da pessoa cadastrada no sistema).
 
-- Realizei o CRUD de acordo com o padrão arquitetural REST, observando os respectivos conceitos.
+* Realizei o CRUD de acordo com o padrão arquitetural REST, observando os respectivos conceitos.
+
+* Implementei teste unitário com JUnit 5.
 
 

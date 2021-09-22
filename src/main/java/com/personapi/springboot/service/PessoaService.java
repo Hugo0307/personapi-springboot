@@ -25,6 +25,7 @@ public class PessoaService {
 	
 	/**
 	 * Método que insere os dados da pessoa no sistema e retorna o id da pessoa criada no sistema.
+	 * @author Hugo
 	 * @param pessoaDTO
 	 * @return
 	 */
@@ -32,12 +33,13 @@ public class PessoaService {
 		Pessoa pessoaToSave = pessoaMapper.toModel(pessoaDTO);
 		
 		Pessoa savedPessoa = pessoaRepository.save(pessoaToSave);//já salva a pessoa com a data de nascimento convertida
-		return createMessageResponse(savedPessoa.getId(), "ID da pessoa criada: ");
+		return createMessageResponse(savedPessoa.getId(), "Pessoa criada com o id: ");
 	}
 
 	/**
 	 * Método que retorna a lista de pessoas cadastrada no sistema.
-	 * @return 
+	 * @author Hugo
+	 * @return Retorna a lista de pessoas cadastradas no sistema.
 	 */
 	public List<PessoaDTO> listAll() {
 		List<Pessoa> allPessoas = pessoaRepository.findAll();
@@ -48,9 +50,9 @@ public class PessoaService {
 
 	/**
 	 * Método que retorna o registro da pessoa buscada pelo id e caso não exista no sistema,
-	 * retorna uma exceção informando que não existe a pessoa buscada pelo id informado.
+	 * retorna uma exception informando que não existe a pessoa buscada pelo id informado.
 	 * @param id
-	 * @return
+	 * @return Retorna uma pessoa cadastrada no sistema.
 	 * @throws PessoaNotFoundException
 	 */
 	public PessoaDTO findById(Long id) throws PessoaNotFoundException {
@@ -78,9 +80,9 @@ public class PessoaService {
 	
 	/**
 	 * Método responsável por verificar se existe a pessoa pelo id informado e retorna
-	 * uma exceção caso não haja registro com o id informado.
+	 * uma exception caso não haja registro com o id informado.
 	 * @param id
-	 * @return
+	 * @return Retorna uma exception caso não haja a pessoa com o id informado.
 	 * @throws PessoaNotFoundException
 	 */
 	private Pessoa verifyIfExists(Long id) throws PessoaNotFoundException {
@@ -92,7 +94,7 @@ public class PessoaService {
 	 * Método que realiza a atualiza o registro da pessoa do id informado
 	 * @param id
 	 * @param pessoaDTO
-	 * @return
+	 * @return Retorna o id da pessoa que o registro foi atualizado, caso não exista retorna uma exception
 	 * @throws PessoaNotFoundException
 	 */
 	public MessageResponseDTO updateById(Long id, PessoaDTO pessoaDTO) throws PessoaNotFoundException {
@@ -109,7 +111,7 @@ public class PessoaService {
 	 * Método criado para não haver código boilerplate
 	 * @param id
 	 * @param message
-	 * @return
+	 * @return Retorna a mensagem de resposta ao criar e ou atualizar o registro no sistema. 
 	 */
 	private MessageResponseDTO createMessageResponse(Long id, String message) {
 		return MessageResponseDTO
