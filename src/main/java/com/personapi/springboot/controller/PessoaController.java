@@ -21,19 +21,17 @@ import com.personapi.springboot.dto.PessoaDTO;
 import com.personapi.springboot.exception.PessoaNotFoundException;
 import com.personapi.springboot.service.PessoaService;
 
-import lombok.AllArgsConstructor;
-
 @RestController
 @RequestMapping("/api/v1/people")
-@AllArgsConstructor(onConstructor = @__(@Autowired))//cria um construtor default em tempo de compilação como o que está abaixo comentado
+//@AllArgsConstructor(onConstructor = @__(@Autowired))//cria um construtor default em tempo de compilação como o que está abaixo comentado
 public class PessoaController {
 	
 	private PessoaService pessoaService;
 	
-	/*@Autowired
+	@Autowired
 	public PessoaController(PessoaService pessoaService) {
 		this.pessoaService = pessoaService;
-	}*/
+	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)

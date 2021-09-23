@@ -13,13 +13,16 @@ import com.personapi.springboot.exception.PessoaNotFoundException;
 import com.personapi.springboot.mapper.PessoaMapper;
 import com.personapi.springboot.repository.PessoaRepository;
 
-import lombok.AllArgsConstructor;
-
 @Service //indica pra o spring gerenciar essa classe do tipo serviço, onde vai conter todas as regras de negócio da aplicação
-@AllArgsConstructor(onConstructor = @__(@Autowired))
+//@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PessoaService {
 	
 	private PessoaRepository pessoaRepository;
+	
+	@Autowired
+	public PessoaService(PessoaRepository pessoaRepository) {
+		this.pessoaRepository = pessoaRepository;
+	}
 	
 	private final PessoaMapper pessoaMapper = PessoaMapper.INSTANCE;
 	
