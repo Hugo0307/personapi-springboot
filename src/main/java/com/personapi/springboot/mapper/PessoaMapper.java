@@ -10,7 +10,6 @@ import com.personapi.springboot.entity.Pessoa;
 @Mapper
 public interface PessoaMapper {
 	
-	
 	PessoaMapper INSTANCE = Mappers.getMapper(PessoaMapper.class);
 	
 	//@Mapping(target = "dataNascimento", source = "dataNascimento", dateFormat = "dd-MM-yyyy")
