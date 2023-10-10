@@ -3,7 +3,6 @@ package com.personapi.springboot.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.personapi.springboot.dto.MessageResponseDTO;
@@ -19,7 +18,6 @@ public class PessoaService {
 	
 	private PessoaRepository pessoaRepository;
 	
-	@Autowired
 	public PessoaService(PessoaRepository pessoaRepository) {
 		this.pessoaRepository = pessoaRepository;
 	}
