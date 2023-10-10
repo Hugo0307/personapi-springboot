@@ -19,13 +19,13 @@ import com.personapi.springboot.dto.PessoaDTO;
 import com.personapi.springboot.exception.PessoaNotFoundException;
 import com.personapi.springboot.service.PessoaService;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/people")
-@Api(value = "API REST Pessoa")
+@Tag(name = "API REST Pessoa")
 @CrossOrigin(origins = "*")
 //@AllArgsConstructor(onConstructor = @__(@Autowired))//cria um construtor default em tempo de compilação como o que está abaixo comentado
 public class PessoaController {
@@ -37,26 +37,26 @@ public class PessoaController {
 	}
 
 	@GetMapping
-	@ApiOperation(value = "retorna os dados de uma lista de pessoas")
+	@Operation(description = "retorna os dados de uma lista de pessoas")
 	public List<PessoaDTO> listAll() {
 		return pessoaService.listAll();
 	}
 	
 	@GetMapping("/{id}")
-	@ApiOperation(value = "retorna os dados de uma pessoa")
+	@Operation(description = "retorna os dados de uma pessoa")
 	public PessoaDTO findById(@PathVariable Long id) throws PessoaNotFoundException {
 		return pessoaService.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@ApiOperation(value = "salva os dados de uma pessoa")
+	@Operation(description = "salva os dados de uma pessoa")
 	public MessageResponseDTO createPessoa(@RequestBody @Valid PessoaDTO pessoaDTO) {
 		return pessoaService.createPessoa(pessoaDTO);
 	}
 		
 	@PutMapping("/{id}")
-	@ApiOperation(value = "atualiza os dados de uma pessoa")
+	@Operation(description = "atualiza os dados de uma pessoa")
 	public MessageResponseDTO updateById(@PathVariable Long id, 
 			@RequestBody @Valid PessoaDTO pessoaDTO) throws PessoaNotFoundException {
 		return pessoaService.updateById(id, pessoaDTO);
@@ -64,7 +64,7 @@ public class PessoaController {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@ApiOperation(value = "deleta os dados de uma pessoa")
+	@Operation(description = "deleta os dados de uma pessoa")
 	public void deleteById(@PathVariable Long id) throws PessoaNotFoundException {
 		pessoaService.delete(id);
 	}
