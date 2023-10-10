@@ -2,9 +2,6 @@ package com.personapi.springboot.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +21,7 @@ import com.personapi.springboot.service.PessoaService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/people")
@@ -34,7 +32,6 @@ public class PessoaController {
 	
 	private PessoaService pessoaService;
 	
-	@Autowired
 	public PessoaController(PessoaService pessoaService) {
 		this.pessoaService = pessoaService;
 	}
