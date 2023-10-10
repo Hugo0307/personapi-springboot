@@ -19,4 +19,9 @@ uma pessoa pelo id informado, atualização e remoção da pessoa cadastrada no 
 
 * Atualizei para Spring Boot 3 e Java 17
 
+* Realizei a migração do SpringFox para SpringDoc
+
+![image](https://github.com/Hugo0307/personapi-springboot/assets/81208290/c9de7ce4-7f7c-4bd9-8884-9f21664c65fc)
+
+
 
