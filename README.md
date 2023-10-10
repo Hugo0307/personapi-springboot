@@ -1,6 +1,6 @@
 # personapi-springboot
 
-Neste projeto estou desenvolvendo a base de um sistema de gerenciamento de pessoas em uma API REST 
+Neste projeto desenvolvi a base de um sistema de gerenciamento de pessoas em uma API REST 
 com Spring Boot, guiado pela live coding na Digital Innovation One, com o professor Rodrigo Peleias.
 
 Desenvolvi usando o SpringToolSuite4.
@@ -13,5 +13,10 @@ uma pessoa pelo id informado, atualização e remoção da pessoa cadastrada no 
 * Realizei o CRUD de acordo com o padrão arquitetural REST, observando os respectivos conceitos.
 
 * Implementei teste unitário com JUnit 5.
+
+
+## Atualização da aplicação
+
+* Atualizei para Spring Boot 3 e Java 17
 
 
