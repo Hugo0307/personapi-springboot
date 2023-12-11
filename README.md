@@ -23,5 +23,6 @@ uma pessoa pelo id informado, atualização e remoção da pessoa cadastrada no 
 
 ![image](https://github.com/Hugo0307/personapi-springboot/assets/81208290/c9de7ce4-7f7c-4bd9-8884-9f21664c65fc)
 
+* Realizei a integração com um banco de dados Postgres executando em uma imagem Docker no WSL.
 
 
